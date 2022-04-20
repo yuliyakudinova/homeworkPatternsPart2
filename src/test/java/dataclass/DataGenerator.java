@@ -24,8 +24,7 @@ public class DataGenerator {
             .log(LogDetail.ALL)
             .build();
 
-    @BeforeAll
-    static void setUpAll(Users user) {
+    static void sendRequest(Users user) {
         // сам запрос
         given() // "дано"
                 .spec(requestSpec) // указываем, какую спецификацию используем
@@ -57,7 +56,7 @@ public class DataGenerator {
 
         public static Users getRegisteredUser(String status) {
             Users user = getUser(status);
-            setUpAll(user);
+            sendRequest(user);
             return user;
         }
     }
